@@ -4,4 +4,6 @@ import * as cdk from '@aws-cdk/core';
 import { MusicAlbumFinderApiStack } from '../lib/music-album-finder-api-stack';
 
 const app = new cdk.App();
-new MusicAlbumFinderApiStack(app, 'MusicAlbumFinderApiStack');
+const env = { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION };
+
+new MusicAlbumFinderApiStack(app, 'SpotifyCloneWebsiteStack', { env });
