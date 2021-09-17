@@ -1,0 +1,27 @@
+name: Production Deployment Flow
+concurrency: production-deploy
+
+on: 
+  push: 
+    branches:
+      - main
+
+jobs:
+  build:
+      runs-on: ubuntu-latest 
+
+      steps:
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Creating / Updating Infrastructure
+          uses: youyo/aws-cdk-github-actions@v2
+          with:
+            cdk_subcommand: 'deploy'
+            cdk_stack: ${{ secrets.API_STACK_NAME }}
+            cdk_args: '--require-approval never'
+            actions_comment: false
+          env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+            AWS_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
