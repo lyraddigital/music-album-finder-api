@@ -19,15 +19,13 @@ jobs:
         - name: Build API Code
           run: cd src && npm install && npm run build
 
-        - name: Is it there
-          run: ls src/lambda/search
-
         - name: Creating / Updating Infrastructure
           uses: youyo/aws-cdk-github-actions@v2
           with:
             cdk_subcommand: 'deploy'
             cdk_stack: ${{ secrets.API_STACK_NAME }}
             cdk_args: '--require-approval never'
+            working_dir: '.'
             actions_comment: false
           env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
