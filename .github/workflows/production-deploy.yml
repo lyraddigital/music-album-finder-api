@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  buildAndDeploy:
       runs-on: ubuntu-latest 
 
       steps:
@@ -17,7 +17,7 @@ jobs:
           run: npm install
 
         - name: Build API Code
-          run: cd src && npm install && npm run build
+          run: cd src && npm install && npm run build && cd lambda/search && ls
 
         - name: Creating / Updating Infrastructure
           uses: youyo/aws-cdk-github-actions@v2
