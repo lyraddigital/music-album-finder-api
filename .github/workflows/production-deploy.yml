@@ -12,6 +12,9 @@ jobs:
 
       steps:
         - uses: actions/checkout@v2
+
+        - name: Checking directories
+          run: ls lib && ls bin && ls
         
         - name: Install CDK Dependencies
           run: npm install
