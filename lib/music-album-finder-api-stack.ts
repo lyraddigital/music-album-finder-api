@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as cdk from '@aws-cdk/core';
 import { Runtime } from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
@@ -9,7 +10,7 @@ export class MusicAlbumFinderApiStack extends cdk.Stack {
     super(scope, id, props);
 
     const searchAlbumsFunction = new NodejsFunction(this, 'SearchAlbumsFunction', {
-        entry: './src/lambda/search/index.js',
+        entry: path.join(__dirname, 'src/lambda/search/index.js'),
         handler: 'handler',
         runtime: Runtime.NODEJS_14_X
     });
