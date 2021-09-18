@@ -9,7 +9,7 @@ export class MusicAlbumFinderApiStack extends cdk.Stack {
     super(scope, id, props);
 
     const searchAlbumsFunction = new NodejsFunction(this, 'SearchAlbumsFunction', {
-        entry: 'asset-input/lambda/search/index.ts',
+        entry: 'src/lambda/search/index.ts',
         handler: 'handler',
         runtime: Runtime.NODEJS_14_X
     });
