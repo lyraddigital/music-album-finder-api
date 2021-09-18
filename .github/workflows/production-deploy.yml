@@ -20,7 +20,7 @@ jobs:
           run: cd src && npm install && npm run build
 
         - name: Is it there
-          run: cd src/lambda/search ls
+          run: ls src/lambda/search
 
         - name: Creating / Updating Infrastructure
           uses: youyo/aws-cdk-github-actions@v2
