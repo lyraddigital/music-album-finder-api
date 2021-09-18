@@ -19,6 +19,9 @@ jobs:
         - name: Build API Code
           run: cd src && npm install && npm run build
 
+        - name: Where Am I
+          run: ls
+
         - name: Creating / Updating Infrastructure
           uses: youyo/aws-cdk-github-actions@v2
           with:
